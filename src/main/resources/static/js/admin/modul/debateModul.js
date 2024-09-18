@@ -1,7 +1,7 @@
 
-export function viewDetailInfo(){
-
-}
+// export function viewDetailInfo(){
+//
+// }
 
 export function dropDebate(){
     let $checkBoxes = document.querySelectorAll(".check-boxes");
@@ -30,3 +30,32 @@ export function dropDebate(){
     })
 
 }
+
+export function allCheckBtn(){
+    let $allCheckBox = document.querySelector("#allCheck");
+    let $checkBoxs = document.querySelectorAll(".check-boxes");
+
+    let isChecked = $allCheckBox.checked;
+    $checkBoxs.forEach(function (checkBox) {
+        checkBox.checked = isChecked;
+    })
+}
+
+// export function dropCheckBox(){
+//
+// }
+// // 체크 박스 전체 선택
+// $allCheckBox.addEventListener('change',function (){
+//     let isChecked = $allCheckBox.checked;
+//     $checkBoxs.forEach(function (checkBox){
+//         checkBox.checked = isChecked;
+//     })
+// })
+// }
+// {
+//     $debateDropBtn.addEventListener('click',() =>{
+//         dropDebate();
+//         console.log("토론 삭제 성공!");
+//         location.reload();
+//     })
+// }

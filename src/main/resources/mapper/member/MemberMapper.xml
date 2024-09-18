@@ -17,6 +17,8 @@
     INSERT INTO TBL_PROFILE(PROFILE_ID, MEMBER_ID, PROFILE_UUID, PROFILE_UPLOAD, PROFILE_NAME, INTRODUCE)
     VALUES (#{profileId},#{memberId},NULL,NULL,NULL,'안녕하세요')
 </insert>
+
+
     <select id="selectLoginIdCount">
         SELECT COUNT(MEMBER_ID)
         FROM TBL_MEMBER

@@ -16,7 +16,7 @@ public class AdMainController {
 
     @GetMapping("/join")
     public String join(){
-        return "admin/main/join";
+        return "admin/main/adminJoin";
     }
 
     @GetMapping("/login")

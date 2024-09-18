@@ -12,20 +12,34 @@
     <link rel="stylesheet" th:href="@{/css/admin/main/join.css}"/>
     <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}"/>
 
-    <script defer th:src="@{/js/member/join.js}"></script>
+    <script defer th:src="@{/js/admin/main/adminJoin.js}"></script>
 </head>
 <body>
 <header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
 <div class="full-screen">
-    <span class="join">회원가입</span>
+    <span class="join">관리자 회원가입</span>
     <div class="items">
 
         <form th:action="@{/member/join}" method="post" id="join-form">
+            <!-- 이름 -->
+            <div class="item">
+                <span class="input-box">이름</span>
+                <div class="inputBox">
+                    <input type="text" name="name" class="typoBox" id="name"
+                           placeholder="4~20자리 / 영문, 숫자, 특수문자 '_'사용가능">
+                </div>
+                <!-- js -->
+                <div class="inputMsg basicMsg"></div>
+                <!--input 창 focus 시 출력 -->
+                <div id="nameMsg" class="msg msgInfo">필수 입력 정보입니다.</div>
+                <!--input 창 blur 후 아무것도 입력 안했을 시-->
+                <div id="nameInvalid" class="msg msgInvalid">이름은 필수 입력 정보입니다.</div>
+            </div>
+
             <!-- 아이디 -->
             <div class="item">
                 <span class="input-date">아이디</span>
                 <div class="inputBox">
-                    <!--                    <input type="text" name="loginId" class="typoBox basics invalid" id="loginId"-->
                     <input type="text" name="loginId" class="typoBox" id="loginId"
                            autocapitalize="off"
                            placeholder="4~20자리 / 영문, 숫자, 특수문자 '_'사용가능">
@@ -36,8 +50,6 @@
                 <div id="loginIdMsg" class="msg msgInfo">4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.</div>
                 <!--input 창 blur 후 아무것도 입력 안했을 시-->
                 <div id="loginIdInvalid" class="msg msgInvalid">@@@4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.</div>
-
-
             </div>
 
             <!-- 비밀번호 -->
@@ -46,36 +58,21 @@
                 <div class="inputBox">
                     <!--                     basics-->
                     <input type="password" name="password" id="password" class="typoBox"
+                           autocapitalize="off"
                            placeholder="8~16자리 / 영문, 숫자, 특수문자 조합">
                 </div>
                 <!-- js -->
                 <div class="inputMsg basicMsg"></div>
                 <div id="passwordMsg" class="msg magInfo">8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합으로 만들어주세요.</div>
                 <div id="passwordInvalid" class="msg msgInvalid">8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합으로 만들어주세요.</div>
-
             </div>
 
-            <!-- 닉네임 -->
-            <div class="item">
-                <span class="input-date">닉네임</span>
-                <p>다른 유저와 겹치지 않도록 입력해주세요. (2-20자)</p>
-                <div class="inputBox">
-                    <input type="text" id="nickname" name="nickname" class="typoBox invalid"
-                           placeholder="별명 입력">
-                </div>
-                <!-- js -->
-                <div class="inputMsg"></div>
-                <div id="nicknameMsg"></div>
-                <div id="nicknameInvalid" class="msg msgInvalid">닉네임은 필수 입력 정보입니다. </div>
-                <div id="" class="msg msgInvalid">이미 사용하고 있는 닉네임입니다.</div>
-            </div>
 
             <!-- 이메일 -->
             <div class="item">
                 <span class="input-date">이메일</span>
                 <div class="inputBox">
-                    <input type="email" id="email" name="email" class="typoBox invalid"
-                           placeholder="example@gmail.com">
+                    <input type="email" id="email" name="email" class="typoBox invalid">
                     <!-- <button>인증요청</button> -->
                 </div>
                 <!-- js -->

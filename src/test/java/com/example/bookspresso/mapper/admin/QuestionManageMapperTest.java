@@ -77,7 +77,7 @@ class QuestionManageMapperTest {
     @Test
     void updateAnswerStatus(){
         questionManageMapper.updateAnswerStatus(37L);
-//        System.out.println(questionDetailDTO.isAStatus());
+        System.out.println("$$$$="+ questionDetailDTO.isAStatus());
 
     }
     @Test

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.admin.AdminManageMapper">
+
+    <insert id="insertAdmin">
+        <selectKey resultType="long" keyProperty="adminId" order="BEFORE">
+            SELECT SEQ_ADMIN.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_ADMIN(ADMIN_ID, ADMIN_LOGIN_ID, ADMIN_PASSWORD, EMAIL, STATUS, NAME)
+        VALUES(#{adminId},#{adminLoginId},#{adminPassword},#{email},#{status},#{name})
+    </insert>
+
+    <select id="selectAdmin">
+        SELECT ADMIN_ID, ADMIN_LOGIN_ID, ADMIN_PASSWORD, EMAIL, CREATED_DATE, APPROVAL_DATE, STATUS, NAME
+        FROM TBL_ADMIN
+        WHERE ADMIN_ID = #{adminId}
+    </select>
+
+<!--    <select id="selectWaitingAdminList">-->
+<!--        SELECT ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, CREATED_DATE, STATUS, NAME-->
+<!--        FROM TBL_ADMIN-->
+<!--        WHERE STATUS = 0-->
+<!--    </select>-->
+
+    <select id="selectWaitingAdminList">
+        SELECT ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, CREATED_DATE, STATUS, NAME
+            FROM (SELECT ROWNUM AS RNUM, ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, CREATED_DATE, STATUS, NAME
+                FROM (SELECT ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, CREATED_DATE, STATUS, NAME
+                    FROM TBL_ADMIN
+                    WHERE STATUS = 0)
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount})
+            ]]>
+        WHERE RNUM > (#{page}-1 * #{amount})
+    </select>
+    <select id="waitingAdminCount">
+        SELECT COUNT(ADMIN_ID)
+        FROM TBL_ADMIN
+        WHERE STATUS = 0
+    </select>
+
+    <update id="updateStatus">
+        UPDATE TBL_ADMIN SET STATUS = 1
+        WHERE ADMIN_ID=#{adminId}
+    </update>
+
+    <update id="updateApprovalDate">
+        UPDATE TBL_ADMIN SET APPROVAL_DATE = SYSDATE WHERE ADMIN_ID=#{adminId}
+    </update>
+
+    <select id="selectAdminList">
+        SELECT ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, APPROVAL_DATE, STATUS, NAME
+        FROM
+            (SELECT ROWNUM AS RNUM, ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, APPROVAL_DATE, STATUS, NAME
+            FROM(
+                SELECT ADMIN_ID, ADMIN_LOGIN_ID, EMAIL, APPROVAL_DATE, STATUS, NAME
+                FROM TBL_ADMIN
+                WHERE STATUS = 1
+                <trim prefix="AND" prefixOverrides="AND|OR">
+                    <choose>
+                      <when test="searchType == 'name'">
+                        NAME LIKE '%' || #{keyword} || '%'
+                      </when>
+                        <when test="searchType == 'adminLoginId'">
+                        ADMIN_LOGIN_ID LIKE '%' || #{keyword} || '%'
+                        </when>
+                    </choose>
+                </trim>
+            )
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+             ]]>
+        )WHERE RNUM > (#{page}-1) * #{amount}
+    </select>
+
+    <select id="searchAdminListCount">
+        SELECT COUNT(ADMIN_ID)
+        FROM TBL_ADMIN
+        WHERE STATUS = 1
+        <trim prefix="AND" prefixOverrides="AND|OR">
+                <choose>
+                    <when test="searchType == 'name'">
+                        NAME LIKE '%' || #{keyword} || '%'
+                    </when>
+                    <when test="searchType == 'adminLoginId'">
+                        ADMIN_LOGIN_ID LIKE '%' || #{keyword} || '%'
+                    </when>
+                </choose>
+        </trim>
+    </select>
+
+    <delete id="deleteStaff">
+        DELETE TBL_ADMIN WHERE ADMIN_ID=#{adminId}
+    </delete>
+
+</mapper>

@@ -84,7 +84,8 @@
                                 <tr th:each="board : ${list}">
                                     <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                     <td class="tc">
-                                        <input type="checkbox" class="checkAction check-boxes" th:value="${board.memberId}" value="checked">
+                                        <input type="checkbox" class="checkAction check-boxes" th:value="${board.memberId}" >
+<!--                                               value="checked">-->
                                     </td>
                                     <td class="tl user"><span th:text="${board.nickname}"></span> (
                                         <span th:text="${board.loginId}"></span>

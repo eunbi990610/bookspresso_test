@@ -1,4 +1,5 @@
-import {dropDebate} from "../modul/debateModul.js";
+import {dropDebate, allCheckBtn} from "../modul/debateModul.js";
+// import {allCheckBtn} from "../modul/debateModul.js";
 
 let $allCheckBox = document.querySelector("#allCheck");
 let $checkBoxs = document.querySelectorAll(".check-boxes");
@@ -32,12 +33,14 @@ let $detailInfo = document.querySelectorAll('.view-info');
 
 { // 체크 박스 전체 선택
     $allCheckBox.addEventListener('change',function (){
-        let isChecked = $allCheckBox.checked;
-        $checkBoxs.forEach(function (checkBox){
-            checkBox.checked = isChecked;
-        })
+        allCheckBtn();
+        // let isChecked = $allCheckBox.checked;
+        // $checkBoxs.forEach(function (checkBox){
+        //     checkBox.checked = isChecked;
+        // })
     })
 }
+// 선택한 체크 박스 삭제 처리
 {
     $debateDropBtn.addEventListener('click',() =>{
         dropDebate();

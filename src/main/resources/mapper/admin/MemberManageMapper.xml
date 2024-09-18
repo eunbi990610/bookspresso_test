@@ -29,12 +29,17 @@
         ORDER BY MEMBER_ID DESC)
         <trim prefix="WHERE" prefixOverrides="OR">
             <choose>
-                <when test="searchType == 'loginId'">
+            <when test="searchType != null and keyword != null">
+                <if test="searchType == 'loginId'">
                     LOGIN_ID LIKE '%' || #{keyword} || '%'
-                </when>
-                <when test="searchType == 'nickname'">
+                </if>
+                <if test="searchType == 'nickname'">
                     NICKNAME LIKE '%' || #{keyword} || '%'
-                </when>
+                </if>
+            </when>
+            <otherwise>
+                1=1
+            </otherwise>
             </choose>
         </trim>
         )
@@ -51,12 +56,17 @@
               FROM TBL_MEMBER)
         <trim prefix="WHERE" prefixOverrides="OR">
             <choose>
-                <when test="searchType == 'loginId'">
-                    LOGIN_ID LIKE '%' || #{keyword} || '%'
+                <when test="searchType != null and keyword != null">
+                    <if test="searchType == 'loginId'">
+                        LOGIN_ID LIKE '%' || #{keyword} || '%'
+                    </if>
+                    <if test="searchType == 'nickname'">
+                        NICKNAME LIKE '%' || #{keyword} || '%'
+                    </if>
                 </when>
-                <when test="searchType == 'nickname'">
-                    NICKNAME LIKE '%' || #{keyword} || '%'
-                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
             </choose>
         </trim>
     </select>

@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
     <link rel="stylesheet" th:href="@{/css/admin/member/manageMember.css}">
-    <script defer type="module" th:src="@{/js/admin/staff/staffList.js}"></script>
+    <script defer type="module" th:src="@{/js/admin/staff/standByList.js}"></script>
 </head>
 <body>
 <header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
@@ -16,8 +16,8 @@
         <div class="header">
             <div class="memberAndAdmin">
                 <ul class="gnb-lists">
-                    <li><a th:href="@{/admin/staff/standBy/list}">관리자 승인 대기 리스트</a></li>
-                    <li><a th:href="@{/admin/staff/list}" class="on">관리자 리스트</a></li>
+                    <li><a th:href="@{/admin/staff/standBy/list}" class="on">관리자 승인 대기 리스트</a></li>
+                    <li><a th:href="@{/admin/staff/list}">관리자 리스트</a></li>
                 </ul>
             </div>
         </div>
@@ -25,35 +25,35 @@
         
         <div class="body">
             <div class="body-content">
-                <h1>관리자 명단</h1>
+                <h1>승인 대기 중인 관리자 명단</h1>
 
                 <!-- 관리자 검색  -->
-                <div class="search">
-                    <div class="search_box">
-                        <span>관리자 검색</span>
-                        <form th:action="@{/admin/staff/list}">
-                            <select name="searchType" size="1">
-                                <option value="loginId">아이디</option>
-                                <option value="nickname">이름</option>
-                            </select>
-                            <input type="text" name="keyword">
-                            <button>검색</button>
-                        </form>
-                    </div>
+<!--                <div class="search">-->
+<!--                    <div class="search_box">-->
+<!--                        <span>관리자 검색</span>-->
+<!--                        <form action="">-->
+<!--                            <select name="findMember" size="1">-->
+<!--                                <option value="loginId">아이디</option>-->
+<!--                                <option value="nickname">이름</option>-->
+<!--                            </select>-->
+<!--                            <input type="text" name="">-->
+<!--                            <button>검색</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
                     <!-- <div class="detail-search">
 
                     </div> -->
                 </div>
 
-                <!-- 멤버 리스트 -->
+                <!-- 관리자 권한 대기 리스트 -->
                 <div class="member_board">
                     <div class="board-title">
-                        <span><strong>전체 관리자 수</strong></span>
+                        <span><strong>대기 관리자 수</strong></span>
                         <span th:text="${total}"></span>
                     </div>
                     <div class="board-action">
                         <span>선택 직원의</span>
-                        <span id="deleteBtn">권한 해제</span>
+                        <span id="change-status">권한 승인</span>
                     </div>
                     <!-- 관리자 정보  -->
                     <div class="board-content">
@@ -69,25 +69,24 @@
                             <thead>
                                 <tr>
                                     <th scope="col">
-                                        <input type="checkbox" class="checkAction" id="allCheck">
+                                        <input type="checkbox" class="checkAction" id="allCheck" >
                                     </th>
                                     <th scope="col">이름</th>
                                     <th scope="col">아이디</th>
                                     <th scope="col">이메일</th>
-                                    <th scope="col">승인일</th>
-
+                                    <th scope="col">등록일</th>
                                 </tr>                               
                             </thead>
                             <tbody>
                                 <tr th:each="board : ${list}">
                                     <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                     <td class="tc">
-                                        <input type="checkbox" class="checkAction check-boxes" name="check" th:value="${board.adminId}">
+                                        <input type="checkbox" class="checkAction check-boxes" th:value="${board.adminId}" >
                                     </td>
-                                    <td class="tc user" th:text="${board.name}"></td>
+                                    <td class="tc user" th:text="${board.name}"}></td>
                                     <td class="tc" th:text="${board.adminLoginId}"></td>
                                     <td class="tc" th:text="${board.email}"></td>
-                                    <td class="tc" th:text="${board.approvalDate}"></td>
+                                    <td class="tc" th:text="${board.createdDate}"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,22 +98,23 @@
         </div>
 
         <!-- 페이지 버튼 -->
-    <div class="page">
+<div class="page">
             <span class="page-line">
-                <a th:href="@{/admin/staff/list(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
+                <a th:href="@{/admin/staff/standBy/list(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
                     <span>&lt</span>
                 </a>
 
-                <a th:href="@{/admin/staff/list(page=${i})}"
+                <a th:href="@{/admin/staff/standBy/list(page=${i})}"
                    th:each="i : ${#numbers.sequence(adminPageSetDTO.startPage, adminPageSetDTO.endPage)}">
                     <span class="page-battom" th:classappend="${adminPageSetDTO.adminPageRequestDTO.page == i ? 'active' : ''}" th:text="${i}"></span>
                 </a>
-                <a th:href="@{/admin/staff/list(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
+                <a th:href="@{/admin/staff/standBy/list(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
                     <span>&gt</span>
                 </a>
             </span>
-    </div>
+</div>
+
         
-    </div>
+<!--    </div>-->
 </body>
 </html>

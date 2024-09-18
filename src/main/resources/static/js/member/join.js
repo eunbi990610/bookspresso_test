@@ -7,7 +7,7 @@ let $checkLoignId = document.getElementsByName("loginId");
 let $successJoin = [];
 /**
  * 아이디 중복 검사 후 에러 메세지 출력
- * 정규표현식 테스트 _> 아이디 이상함 
+ * 정규표현식 테스트 _> 아이디 이상함
   */
 {
     //아이디 중복 검사
@@ -154,28 +154,7 @@ let $successJoin = [];
  * 아이디와 비밀번호의 작성 기준의 대한 메세지 출력 코드
  */
 
-// 함수로 만들어서  개별 칸에 사용
-// {
-//     for (let i = 0; i < $InputBox.length; i++) {
-//
-//         $InputBox[i].addEventListener('focus', function (){
-//             let inputName = this.getAttribute("name");
-//             console.log("inputName ::: "+inputName);
-//
-//             let className = $inputMsg[i].getAttribute("class");
-//             console.log("class = " + className);
-//
-//             let basicMsg = document.getElementById(inputName+"Msg").innerText;
-//             console.log('basicMsg',basicMsg);
-//
-//             $inputMsg[].innerHTML = basicMsg;
-//
-//             if(className == "inputMsg basicMsg error" || className == "inputMsg error"){
-//                 $inputMsg[i].classList.remove("error");
-//                 console.log("class = " + className);
-//             }
-//         })
-//     }}
+
 
  // 함수
 // input 칸에 blur일 때 나오는 기본 에러메서지 출력 함수

@@ -73,7 +73,7 @@ public class DiscussionController {
         model.addAttribute("adminPageSetDTO", adminPageSetDTO);
 
 
-        return "/admin/discussion/onGoingDc";
+        return "admin/discussion/onGoingDc";
     }
 
     //종료된 토론

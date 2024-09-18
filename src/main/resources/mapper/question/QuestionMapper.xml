@@ -33,7 +33,7 @@
 
     <update id="updateQuestion">
         UPDATE TBL_QUESTION
-        SET Q_TITLE =#{qTitle}, Q_CONTENT = #{qContent}, MODIFIED_DATE = SYSDATE
+        SET Q_TITLE =#{qTitle}, Q_CONTENT = #{qContent}, MODIFIED_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 

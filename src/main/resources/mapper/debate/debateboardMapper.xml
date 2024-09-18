@@ -86,7 +86,7 @@
 <!--    댓글 수정-->
     <update id="debateCommentUpdate">
         UPDATE TBL_DEBATE_COMMENT
-        SET DEBATE_COMMENT=#{debateComment},COMMENT_DATE=SYSDATE
+        SET DEBATE_COMMENT=#{debateComment},COMMENT_DATE=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE  COMMENT_ID=#{commentId}
     </update>
 <!--    댓글 삭제-->

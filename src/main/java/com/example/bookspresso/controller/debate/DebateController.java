@@ -56,12 +56,12 @@ public class DebateController {
     public String makePost(Long meetingId, HttpSession session) {
         if (meetingId == 1 || meetingId == 2) {
             session.setAttribute("meetingId", meetingId);
-            return "/debate/debateinpo/debatetype";
+            return "debate/debateinpo/debatetype";
         } else {
             session.setAttribute("meetingId", meetingId);
             session.setAttribute("debateType", 4L);
 
-            return "/debate/debateinpo/debateoutline";
+            return "debate/debateinpo/debateoutline";
         }
 
     }

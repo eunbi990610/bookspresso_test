@@ -38,7 +38,7 @@
     </insert>
     <update id="updatePostComment">
         UPDATE TBL_POST_COMMENT
-        SET  COMMENT_CONTENT=#{commentContent},CREATE_DATE=SYSDATE
+        SET  COMMENT_CONTENT=#{commentContent},CREATE_DATE=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE  COMMENT_ID=#{commentId}
     </update>
     <delete id="deletePostComment">
@@ -53,7 +53,7 @@
     </select>
     <update id="updatemodify">
         UPDATE TBL_POST
-        SET ISBN13=#{isbn13},POST_TITLE=#{postTitle},POST_CONTENT=#{postContent},CREATE_DATE=SYSDATE
+        SET ISBN13=#{isbn13},POST_TITLE=#{postTitle},POST_CONTENT=#{postContent},CREATE_DATE=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE POST_ID=#{postId} AND MEMBER_ID=#{memberId}
     </update>
     <delete id="deletePost">

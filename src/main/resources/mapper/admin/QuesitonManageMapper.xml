@@ -85,7 +85,7 @@
 <!--  답글 수정  -->
     <update id="updateAnswer">
         UPDATE TBL_ANSWER
-        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, ANSWER_MODIFIED_DATE = SYSDATE
+        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, ANSWER_MODIFIED_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 

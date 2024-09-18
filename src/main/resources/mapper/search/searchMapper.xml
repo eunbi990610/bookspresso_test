@@ -31,7 +31,7 @@
                  JOIN TBL_BOOK B
                       ON DB.ISBN13 = B.ISBN13
     <![CDATA[    WHERE (MEETING_TYPE = '오프라인' OR MEETING_TYPE = '온라인')
-          AND DEBATE_END_DATE > SYSDATE ]]>
+          AND DEBATE_END_DATE > TO_CHAR(SYSDATE, 'YYYY-MM-DD') ]]>
         ORDER BY DEBATE_ID DESC
     </select>
     <select id="selectlib">
@@ -74,7 +74,7 @@
     </insert>
     <update id="updatebookcomment">
         UPDATE TBL_BOOK_COMMENT
-        SET  BOOK_COMMENT=#{bookComment},BOOK_DATE=SYSDATE
+        SET  BOOK_COMMENT=#{bookComment},BOOK_DATE=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         WHERE  COMMENT_ID=#{commentId}
     </update>
 

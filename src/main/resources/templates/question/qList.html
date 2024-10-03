@@ -32,7 +32,7 @@
 <!--                            <option value="aStatus">답변 상태</option>-->
                         </div>
                         <div class="input-box">
-                            <input type="text" name="keyword" placeholder="검색어를 입력해주세요">
+                            <input type="text" name="keyword" placeholder="검색어를 입력해주세요" th:value="${keyword}">
                             <button>
                                 <img class="search-icon" src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.44339 14.378C11.7226 14.3764 14.3796 11.7168 14.3779 8.43756C14.3763 5.15837 11.7167 2.50138 8.4375 2.50301C5.15831 2.50463 2.50132 5.16426 2.50294 8.44345C2.50457 11.7226 5.1642 14.3796 8.44339 14.378Z' stroke='%23131518' stroke-width='1.5'/%3E%3Cpath d='M16.9623 18.0436C17.2552 18.3365 17.7301 18.3365 18.023 18.0436C18.3159 17.7507 18.3159 17.2758 18.023 16.9829L16.9623 18.0436ZM11.9623 13.0436L16.9623 18.0436L18.023 16.9829L13.023 11.9829L11.9623 13.0436Z' fill='%23131518'/%3E%3C/svg%3E" alt="검색창 아이콘">
                             </button>
@@ -67,7 +67,7 @@
                     <tbody>
                         <!-- Q&A 내용  -->
                         <tr th:each="board : ${list}">
-                            <td class="tc" th:text="${board.qBoardId}"></td>
+                            <td class="tc" th:text="${board.RNum}"></td>
                             <td class="tc" th:if="${board.aStatus==true}"><span class="status clear">답장 완료</span></td>
                             <td class="tc" th:unless="${board.aStatus==true}"><span class="status unclear">답장 미완료</span></td>
 <!--                             th:text="${board.aStatus}" th:data-id="${board.aStatus}" -->

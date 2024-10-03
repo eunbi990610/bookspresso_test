@@ -15,9 +15,7 @@
             <div class="sub">
                 <ul class="gnb-lists">
                     <li><a th:href="@{/admin/poster/public}" class="on">공개 포스터</a></li>
-<!--                    <li><a th:href="@{/admin/poster/private}">비공개 포스트</a></li>-->
-<!--                    <li><a th:href="@{/admin/poster/drop}">강제 삭제된 포스트</a></li>-->
-                </ul>    
+                </ul>
             </div>
         </div>
         <!-- 바디  -->
@@ -32,11 +30,11 @@
                         <span>포스터 검색</span>
                         <form th:action="@{/admin/poster/public/search}" method="get">
                             <select name="searchType" size="1">
-                                <option value="postTitle">포스트 제목</option>
-                                <option value="bookName">책 제목</option>
-                                <option value="nickname">작성회원</option>
+                                <option th:value="postTitle" th:selected="${searchType=='postTitle'}">포스트 제목</option>
+                                <option th:value="bookName" th:selected="${searchType=='bookName'}">책 제목</option>
+                                <option th:value="nickname" th:selected="${searchType=='nickname'}">작성회원</option>
                             </select>
-                            <input type="text" name="keyword">
+                            <input type="text" name="keyword" th:value="${keyword}">
                             <button>검색</button>
                         </form>
                     </div>
@@ -48,7 +46,7 @@
                 <!-- 포스트 리스트 -->
                 <div class="board">
                     <div class="board-title">
-                        <span><strong>포스트 리스트</strong></span>
+                        <span><strong>포스트</strong></span>
                         <span th:text="${total}"></span>
                     </div>
                     <div class="board-action">

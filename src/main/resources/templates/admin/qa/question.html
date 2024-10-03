@@ -36,10 +36,9 @@
                     <div class="board-content">
                         <table>
                             <colgroup>
-                                <col width="350px"/>
-                                <col width="160px"/>
-                                <col width="160px"/>
-                                <col width="100px"/>
+                                <col width="360px"/>
+                                <col width="210px"/>
+                                <col width="200px"/>
                                 <col width="150px"/>
                             </colgroup>
                         
@@ -49,7 +48,6 @@
                                     <th scope="col">작성 회원</th>
                                     <th scope="col">질문 작성일</th>
                                     <th scope="col">답변상태</th>
-                                    <th scope="col">답변 작성 관리자</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,7 +62,6 @@
                                     <td class="tc" th:text="${board.createDate}"></td>
                                     <td class="tr" th:if="${board.aStatus==true}">답변 완료</td>
                                     <td class="tr" th:unless="${board.aStatus==true}">답변 미완료</td>
-                                    <td class="tr" th:text="${board.adminId}"></td>
                                 </tr>
 
                             </tbody>

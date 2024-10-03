@@ -40,6 +40,7 @@ public class MailService {
 
     }
 
+
     // 전송할 메일 내용
     //thymeleaf를 활용하여 html 만들기
     public String setContext(String content) {
@@ -60,5 +61,6 @@ public class MailService {
 
         return authNumber;
     }
+    
 
 }

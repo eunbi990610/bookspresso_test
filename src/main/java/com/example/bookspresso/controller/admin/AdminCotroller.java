@@ -55,9 +55,11 @@ public class AdminCotroller {
         System.out.println("adminPageRequestDTO = " + adminPageRequestDTO + ", posterSearchDTO = " + posterSearchDTO);
         AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
         System.out.println("adminPageSetDTO.prev = " + adminPageSetDTO.isPrev());
+
         model.addAttribute("adminPageSetDTO", adminPageSetDTO);
         model.addAttribute("list", list);
         model.addAttribute("total", total);
+        model.addAttribute("keyword", posterSearchDTO.getKeyword());
 
 
 

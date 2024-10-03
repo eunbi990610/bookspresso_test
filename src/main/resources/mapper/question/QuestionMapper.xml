@@ -46,7 +46,7 @@
 
 
     <select id="selectListWithPage">
-        SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
+        SELECT RNUM, Q_BOARD_ID, A_STATUS, Q_TITLE,
         MEMBER_ID, NICKNAME, CREATE_DATE, VIEW_COUNT
         FROM(
             SELECT ROWNUM AS RNUM, Q_BOARD_ID, A_STATUS, Q_TITLE,

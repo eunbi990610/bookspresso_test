@@ -58,13 +58,13 @@ public class MemberApi {
     @PostMapping("/find/email/{email}")
     public String emailCertifiedNumber(@PathVariable("email") String email){
 
-        System.out.println("emain@@" + email);
+//        System.out.println("emain@@" + email);
         int findEmail = memberService.findEmail(email);
-        System.out.println("findEmail = " + findEmail);
+//        System.out.println("findEmail = " + findEmail);
 
         if(findEmail == 1){
             String authNumber = mailService.sendEmail(email);
-            System.out.println("이메일 인증번호 발송 성공!");
+//            System.out.println("이메일 인증번호 발송 성공!");
             return authNumber;
         }else{
             new Exception().printStackTrace();

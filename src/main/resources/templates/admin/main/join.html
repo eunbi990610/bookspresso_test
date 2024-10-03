@@ -13,12 +13,12 @@
     <link rel="stylesheet" th:href="@{/css/header/header.css}">
     <link rel="stylesheet" th:href="@{/css/member/join.css}"/>
 
-    <script defer th:src="@{/js/member/join.js}"></script>
+    <script defer th:src="@{/js/admin/main/join.js}"></script>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 <div class="full-screen">
-    <span class="join">회원가입</span>
+    <span class="join">관리자 회원가입</span>
     <div class="items">
 
         <form th:action="@{/member/join}" method="post" id="join-form">
@@ -59,17 +59,16 @@
 
             <!-- 닉네임 -->
             <div class="item">
-                <span class="input-date">닉네임</span>
-                <p>다른 유저와 겹치지 않도록 입력해주세요. (2-20자)</p>
+                <span class="input-date">이름</span>
                 <div class="inputBox">
                     <input type="text" id="nickname" name="nickname" class="typoBox invalid"
-                           placeholder="별명 입력">
+                           placeholder="이름 입력">
                 </div>
                 <!-- js -->
                 <div class="inputMsg"></div>
                 <div id="nicknameMsg"></div>
-                <div id="nicknameInvalid" class="msg msgInvalid">닉네임은 필수 입력 정보입니다. </div>
-                <div id="" class="msg msgInvalid">이미 사용하고 있는 닉네임입니다.</div>
+                <div id="nicknameInvalid" class="msg msgInvalid">이름은 필수 입력 정보입니다. </div>
+<!--                <div id="" class="msg msgInvalid">이미 사용하고 있는 닉네임입니다.</div>-->
             </div>
 
             <!-- 이메일 -->

@@ -21,6 +21,12 @@
         WHERE ADMIN_ID = #{adminId}
     </select>
 
+    <select id="selectStatus">
+        SELECT STATUS
+        FROM TBL_ADMIN
+        WHERE ADMIN_LOGIN_ID = #{adminLoginId}
+    </select>
+
 
 
 </mapper>

@@ -105,9 +105,9 @@
                                     <td colspan="7">
                                         <div class="met-attend">
                                             <div>토론 참여 회원</div>
-                                            <div class="met-attend-list" th:each="attendList : ${board.getAttendList()}">
-                                                <span th:text="${attendList.nickname}"></span>
-                                            </div>
+                                            <span class="met-attend-list" th:each="attendList : ${board.getAttendList()}">
+                                                <span class="attend-member" th:text="${attendList.nickname}"></span>
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>

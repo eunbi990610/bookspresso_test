@@ -19,8 +19,8 @@ let $successJoin = [];
     $InputBox[0].addEventListener('change', function (){
         //정규표현식 검사
         let loginId = this.value.match(loginReg);
-        console.log(this.value);
-        console.log(loginId);
+        // console.log(this.value);
+        // console.log(loginId);
 
         if (loginId != null){
             fetch(`/join/check-loginId/${loginId}`, {method: 'POST'})
@@ -29,12 +29,12 @@ let $successJoin = [];
                     if (text != 0){
                         // 이미 존재하는 아이디
                         $inputMsg[0].innerHTML = "이미 존재하는 아이디입니다. ";
-                        console.log("class name = "+$inputMsg[0].getAttribute("class"));
+                        // console.log("class name = "+$inputMsg[0].getAttribute("class"));
                         msgColorRed(0);
                         $successJoin[0] = false;
                     }else{
                         $inputMsg[0].innerHTML = "사용가능한 ID입니다. ";
-                        console.log("class name = "+$inputMsg[0].getAttribute("class"));
+                        // console.log("class name = "+$inputMsg[0].getAttribute("class"));
                         $successJoin[0] = true;
                         msgColorBlue(0)
                     }
@@ -70,9 +70,21 @@ let $successJoin = [];
         else{
             // console.dir($inputMsg[1])
             $inputMsg[1].innerText =document.querySelector("#passwordInvalid").innerText;
-            console.log("sfsf#### = " + $inputMsg[1].innerText);
+            // console.log("sfsf#### = " + $inputMsg[1].innerText);
             msgColorRed(1);
             $successJoin[1] = false;
+        }
+    })
+
+    icon.addEventListener('click', function (){
+        let currentType = $InputBox[1].getAttribute('type');
+        if (currentType === 'password'){
+            $InputBox[1].setAttribute('type','text');
+            // 아이콘 눈 감고 있는 걸로 변경 .textContent
+        }else{
+            $InputBox[1].setAttribute('type','password');
+            // 아이콘 눈 뜨고 있는 걸로 변경 .textContent
+
         }
     })
 
@@ -86,25 +98,15 @@ let $successJoin = [];
 {
     printBasicMsg(2);
     $InputBox[2].addEventListener('change', function(){
-        let nickname = this.value;
-        console.log("nickname = " + nickname);
+        let name = this.value;
+        // console.log("nickname = " + nickname);
 
-        // 한글 인식 못함
-        fetch(`/join/check-nickname?nickname=${nickname}`, {method : 'GET'})
-            .then(resp => resp.text())
-            .then(text =>{
-                console.log(text);
-                if (text != 0) {
-                    $inputMsg[2].innerText = "사용 중인 닉네임입니다."
-                    msgColorRed(2);
-                    $successJoin[2] = false;
-                }else{
-                    $inputMsg[2].innerText = "사용 가능한 닉네임입니다 :) ";
-                    msgColorBlue(2);
-                    $successJoin[2] = true;
-                    console.log("닉네임 중복 검사 통과@@");
-                }
-            })
+        // if (name != null){
+        //     $successJoin[2] = true;
+        // }else{
+        //     $successJoin[2] = false;
+        // }
+        name!=null?$successJoin[2] = true:$successJoin[2] = false;
     })
 }
 

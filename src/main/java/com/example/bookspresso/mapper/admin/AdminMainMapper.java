@@ -18,6 +18,7 @@ public interface AdminMainMapper {
 
     String selectAdminLoginId(Long adminId);
 
+    int selectStatus(String adminLoginId);
 
 }
 

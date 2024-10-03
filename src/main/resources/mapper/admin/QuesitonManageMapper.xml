@@ -72,8 +72,8 @@
         <selectKey resultType="long" keyProperty="answerId" order="BEFORE">
             SELECT SEQ_ANSWER.nextval FROM DUAL
         </selectKey>
-        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT)
-        VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent})
+        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT, CREATED_DATE)
+        VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent}, SYSDATE)
     </insert>
 
     <update id="updateAnswerStatus">

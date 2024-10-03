@@ -22,7 +22,10 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/join")
-    public String join(){
+    public String join(HttpSession session){
+        if (session.getAttribute("memberId") != null){
+            return "redirect:/";
+        }
         return "member/join";
     }
 
@@ -30,13 +33,12 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(MemberJoinDTO memberJoinDTO, ProfleJoinDTO profleJoinDTO){
-// join.html에서 모든 input에 값을 입력하지 않으면 데이터가 전송되지 않게 설정
         System.out.println("@@@@@ memberJoinDTO = " + memberJoinDTO);
 
         try {
             System.out.println("addmember실행");
             memberService.addMember(memberJoinDTO);
-            profleJoinDTO.setMemberId( memberJoinDTO.getMemberId());
+            profleJoinDTO.setMemberId(memberJoinDTO.getMemberId());
             System.out.println("memberJoinDTO = " + profleJoinDTO);
             memberService.addProfle(profleJoinDTO);
             System.out.println("프로필실행");
@@ -89,7 +91,7 @@ public class MemberController {
         String loginId = "";
         char[] charArray = login.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
-            if(i < 4){
+            if(i < charArray.length - 3){
                 loginId += charArray[i];
             }else{
                 loginId += "*";

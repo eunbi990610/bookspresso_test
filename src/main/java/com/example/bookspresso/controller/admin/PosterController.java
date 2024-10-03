@@ -58,21 +58,22 @@ public class PosterController {
         model.addAttribute("total", total);
         model.addAttribute("list", list);
         model.addAttribute("adminPageSetDTO",adminPageSetDTO);
-
+        model.addAttribute("keyword",keyword);
+        model.addAttribute("searchType",searchType);
         return "admin/poster/publicPoster";
     }
 
 
     //비공개된 포스터
-    @GetMapping("/private")
-    public String privatePoster(){
-        return "admin/poster/privatePoster";
-    }
-
-
-    @GetMapping("/drop")
-    public String dropPoster(){
-        return "admin/poster/dropPoster";
-    }
+//    @GetMapping("/private")
+//    public String privatePoster(){
+//        return "admin/poster/privatePoster";
+//    }
+//
+//
+//    @GetMapping("/drop")
+//    public String dropPoster(){
+//        return "admin/poster/dropPoster";
+//    }
 
 }

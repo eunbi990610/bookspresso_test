@@ -272,10 +272,13 @@
 
     
     <select id="selectAttendMember">
-        SELECT MD.DEBATE_ID, MD.MEMBER_ID, M.NICKNAME
-        FROM TBL_MEMBER_DEBATE MD JOIN TBL_MEMBER M
-                                       ON MD.MEMBER_ID = M.MEMBER_ID
-        WHERE MD.DEBATE_ID = #{debateId}
+        SELECT DISTINCT NICKNAME, M.MEMBER_ID, DEBATE_ID
+        FROM(SELECT NOTICE_ID, MEMBER_ID, D.DEBATE_ID
+             FROM TBL_DEBATE D JOIN TBL_DEBATE_BOARD DB
+                                    ON D.DEBATE_ID = DB.DEBATE_ID
+             WHERE D.DEBATE_ID = #{debateId}) T JOIN TBL_MEMBER M
+                                             ON M.MEMBER_ID = T.MEMBER_ID
+        ORDER BY MEMBER_ID
     </select>
 
 <!--  토론 삭제 쿼리  -->

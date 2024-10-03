@@ -37,9 +37,10 @@ public class DiscussionController {
 
         list.forEach(manageDebateDTO ->{
             List<AttendMemberDTO> attendMemberList = manageDebateService.findAttendMemberList(manageDebateDTO.getDebateId());
+            System.out.println("attendMemberList = " + attendMemberList);
             manageDebateDTO.setAttendList(attendMemberList);
         });
-
+        System.out.println("#####3 list = " + list);
 
         int total = manageDebateService.findDebateCount();
         AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
@@ -48,6 +49,7 @@ public class DiscussionController {
         model.addAttribute("total", total);
         model.addAttribute("list", list);
         model.addAttribute("adminPageSetDTO", adminPageSetDTO);
+//        model.addAttribute("")
 
         return "admin/discussion/onGoingDc";
     }

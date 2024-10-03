@@ -21,6 +21,7 @@ public class ManageQuestionListDTO {
     private String answerModifiedDate;
 
     private Long answerId;
+    private String name;
     private String adminLoginId;
 
 }

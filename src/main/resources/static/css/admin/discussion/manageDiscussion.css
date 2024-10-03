@@ -231,28 +231,26 @@ tbody td{
     margin: 6px 0 4px 0;
 }
 
-.met-type,
-.met-attend{
+.met-type{
+/*.met-attend{*/
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 /* 토론 참여 회원 리스트  */
+.met-attend > div{
+    margin: 10px 0;
+}
 
-/*.met-attend-list{*/
-/*    font-size: 14px;*/
+.met-attend-list{
+    font-size: 14px;
+}
 
-/*    white-space: normal;*/
-/*    word-break: keep-all;*/
-
-/*    display: flex;*/
-
-/*}*/
-
-/*.met-attend-list > span {*/
-/*    padding: 3px 4px;*/
-/*}*/
+.attend-member {
+    padding: 5px 10px 5px 0;
+    /*margin-top: 10px;*/
+}
 
 
 

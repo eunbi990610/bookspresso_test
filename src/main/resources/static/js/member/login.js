@@ -3,14 +3,12 @@ let $pwForm =document.querySelector('#pwForm');
 let loginBtn = document.querySelector('#loginBtn');
 let $loginForm = document.querySelector('#login-form');
 {
-
-
-
     loginBtn.addEventListener('click', function () {
       let loginId = $idForm.value;
       let password = $pwForm.value;
 
-        fetch(`/login/findMemberId/${loginId}/${password}`, {method: 'POST'})
+        fetch(`/login/findMemberId/${loginId}/${password}`,
+            {method: 'POST'})
             .then(resp => resp.text())
             .then(text => {
                 if (text == "true") {

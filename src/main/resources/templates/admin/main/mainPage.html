@@ -16,14 +16,12 @@
          <!-- 관리자 정보  -->
         <div class="info_area">
             <div class="info_area-img">
-                <img src="https://ssl.pstatic.net/static/cafe/thumb/make_cafe_thumb_default.png" alt="관리자 아이콘">
+                <img th:src="@{/img/logo.png}" alt="titleLogo"/>
             </div>
             <div class="info_area-cont">
                 <ul class="count">
-<!--                    <img src="" alt=""/>-->
-                    <li>회원수 : <span>70</span></li>
-<!--                    <img src="" alt=""/>-->
-                    <li>게시글 수 : <span>100</span></li>
+                    <li>회원수 : <span th:text="${memberCount}"></span></li>
+                    <li>토론장 수 : <span th:text="${debateCount}"></span></li>
 
                     <!-- 이미지 찾으면 li삭제  -->
                 </ul>

@@ -14,5 +14,6 @@ public class QuestionListDTO {
     private int viewCount;
     private String nickname;
     private int total;
+    private int RNum;
 
 }

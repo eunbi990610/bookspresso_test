@@ -15,9 +15,7 @@
             <div class="memberAndAdmin">
                 <ul class="gnb-lists">
                     <li><a th:href="@{/admin/member/allList}" class="on">전체 멤버 관리</a></li>
-<!--                    <li><a th:href="@{/admin/member/stop-activity}">활동정지 멤버 관리</a></li>-->
-<!--                    <li><a th:href="@{/admin/member/forced-out}">강제탈퇴 멤버 관리</a></li>-->
-                </ul>    
+                </ul>
             </div>
         </div>
         <!-- 바디  -->
@@ -35,13 +33,12 @@
                                 <option value="loginId">아이디</option>
                                 <option value="nickname">별명</option>
                             </select>
-                            <input type="text" name="keyword">
+                            <input type="text" name="keyword" th:value="${keyword}">
                             <button>검색</button>
                         </form>
                     </div>
-                    <!-- <div class="detail-search">
 
-                    </div> -->
+                    </div>
                 </div>
 
                 <!-- 멤버 리스트 -->
@@ -60,11 +57,10 @@
                             <colgroup>
                                 <col width="23px"/>
                                 <col width="370px"/>
-                                <col width="207px"/>
-                                <col width="135px"/>
-                                <col width="100px"/>
-                                <col width="100px"/>
-                                <col width="100px"/>
+                                <col width="237px"/>
+                                <col width="165px"/>
+                                <col width="120px"/>
+                                <col width="120px"/>
                             </colgroup>
                         
                             <thead>
@@ -77,15 +73,13 @@
                                     <th scope="col">가입일</th>
                                     <th scope="col">참여 토론 수</th>
                                     <th scope="col">포스터 수</th>
-                                    <th scope="col">댓글 수</th>
-                                </tr>                               
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="board : ${list}">
                                     <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                     <td class="tc">
                                         <input type="checkbox" class="checkAction check-boxes" th:value="${board.memberId}" >
-<!--                                               value="checked">-->
                                     </td>
                                     <td class="tl user"><span th:text="${board.nickname}"></span> (
                                         <span th:text="${board.loginId}"></span>
@@ -94,7 +88,6 @@
                                     <td class="tc" th:text="${board.joinDate}"></td>
                                     <td class="tr" th:text="${board.debateNum}"></td>
                                     <td class="tr" th:text="${board.posterNum}"></td>
-                                    <td class="tr"></td>
                                 </tr>
                             </tbody>
                         </table>

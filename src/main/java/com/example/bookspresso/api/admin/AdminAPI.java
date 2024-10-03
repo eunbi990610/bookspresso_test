@@ -29,6 +29,12 @@ public class AdminAPI {
 
     }
 
+    @PostMapping("/login/check/{loginId}")
+    public boolean checkStatus(@PathVariable String loginId) {
+        int status = adminService.findStatus(loginId);
+        return (status==1);
+    }
+
 
     //회원 삭제
     @PostMapping("admin/member/drop/{dropMemberLists}")

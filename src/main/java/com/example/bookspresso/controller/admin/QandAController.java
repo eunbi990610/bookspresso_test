@@ -60,23 +60,25 @@ public class QandAController {
     }
 
     @GetMapping("/popup")
-    public String popup(Long qBoardId, Model model){
+    public String answer(Long qBoardId, Model model, HttpSession session){
 //        return "redirect:/qa/detail";
         QuestionDetailDTO list = questionService.findQuestion(qBoardId);
         System.out.println("findList###### = " + list);
         model.addAttribute("list", list);
 
+        Long adminId = (Long)session.getAttribute("adminId");
+        System.out.println("###adminId = " + adminId);
         return "admin/qa/toAnswer";
     }
 
     @PostMapping("/popup")
-    public String popup(QuestionAnswerDTO questionAnswerDTO,
+    public String answer(QuestionAnswerDTO questionAnswerDTO,
                         HttpSession session){
 
         questionAnswerDTO.setAdminId((Long)session.getAttribute("adminId"));
-        System.out.println("@@@questionAnswerDTO =" + questionAnswerDTO);
-        
         manageQuestionService.addAnswer(questionAnswerDTO);
+        System.out.println("@@@adminId =" + questionAnswerDTO.getAdminId());
+
 
         return "redirect:/admin/question/list";
     }

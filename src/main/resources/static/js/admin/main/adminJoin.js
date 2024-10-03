@@ -1,4 +1,4 @@
-let $InputBox = document.querySelectorAll('.typoBox');
+ let $InputBox = document.querySelectorAll('.typoBox');
 let $inputMsg = document.querySelectorAll('.inputMsg');
 let $joinForm = document.querySelector("#join-form");
 let $joinBtn = document.querySelector("#join-btn");

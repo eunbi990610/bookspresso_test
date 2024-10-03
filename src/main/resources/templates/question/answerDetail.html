@@ -37,7 +37,7 @@
           <div class="answer-box" th:if="${question.AStatus==true}">
             <span class="answer-title">
               관리자 답변
-              <span th:text="${question.createdDate}"></span>
+              <span th:text="${question.answerCreatedDate}"></span>
             </span>
             <div class="answer-content" th:text="${question.AContent}"></div>
           </div>

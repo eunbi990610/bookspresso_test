@@ -53,6 +53,7 @@ public class AdMemberController {
         model.addAttribute("total", total);
         model.addAttribute("list", list);
         model.addAttribute("adminPageSetDTO", adminPageSetDTO);
+        model.addAttribute("keyword", memberSearchDTO.getKeyword());
 
         return "admin/member/allList";
     }

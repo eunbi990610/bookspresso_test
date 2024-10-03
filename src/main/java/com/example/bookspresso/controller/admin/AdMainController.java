@@ -1,6 +1,8 @@
 package com.example.bookspresso.controller.admin;
 
 import com.example.bookspresso.service.admin.AdminService;
+import com.example.bookspresso.service.admin.ManageDebateService;
+import com.example.bookspresso.service.admin.ManageMemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class AdMainController {
 
     private final AdminService adminService;
+    private final ManageMemberService manageMemberService;
+    private final ManageDebateService manageDebateService;
 
     @GetMapping("/join")
-    public String join(){
-        return "admin/main/adminJoin";
+    public String join(HttpSession session){
+        if(session.getAttribute("adminId")!=null){
+            return "redirect:/admin/main";
+        }
+        return "admin/main/join";
     }
 
     @GetMapping("/login")
@@ -44,13 +51,18 @@ public class AdMainController {
 
 
     @GetMapping("/main")
-    public String main(@SessionAttribute("adminId") Long adminId,
+    public String mainPage(@SessionAttribute("adminId") Long adminId,
                        Model model){
 
         String adminLoginId = adminService.findAdminLoginId(adminId);
+        int memberCount = manageMemberService.findListCount();
+        int debateCount = manageDebateService.findDebateCount() + manageDebateService.findEndDebateCount() + manageDebateService.findRecruitingDebateCount();
+
 
         model.addAttribute("adminId", adminId);
         model.addAttribute("adminLoginId", adminLoginId);
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("debateCount", debateCount);
         return "admin/main/mainPage";
     }
 

@@ -51,8 +51,9 @@ public class AdMainController {
 
 
     @GetMapping("/main")
-    public String mainPage(@SessionAttribute("adminId") Long adminId,
-                       Model model){
+    public String mainPage(HttpSession session, Model model){
+
+        Long adminId = (Long)session.getAttribute("adminId");
 
         String adminLoginId = adminService.findAdminLoginId(adminId);
         int memberCount = manageMemberService.findListCount();

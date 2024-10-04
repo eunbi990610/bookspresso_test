@@ -10,13 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
     <!--  /폰트 -->
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/css/header/header.css}">
     <link rel="stylesheet" th:href="@{/css/member/join.css}"/>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}"/>
 
     <script defer th:src="@{/js/admin/main/join.js}"></script>
 </head>
 <body>
-<header th:replace="~{fragments/header :: header}"></header>
+
+<header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
 <div class="full-screen">
     <span class="join">관리자 회원가입</span>
     <div class="items">

@@ -11,10 +11,8 @@
     <!-- 관리자 페이지 상단 헤더 -->
     <div class="gnb">
 <!--        <span><img class="logo-img" src="/img/logo.png" alt="로고"/></span>-->
-        <span>BookSpresso</span>
-        <span>
-            <a th:href="@{/admin/main}">관리자 페이지</a>
-        </span>
+        <span>BOOK'Spresso</span>
+        <span>관리자 페이지</span>
         <span th:if="${session.adminId!=null}">
             <a th:href="@{/admin/logout}">로그아웃</a></span>
     </div>

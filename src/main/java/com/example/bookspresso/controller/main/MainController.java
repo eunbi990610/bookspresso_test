@@ -21,7 +21,7 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String mainpage(Model model)throws Exception{
+    public String mainPage(Model model)throws Exception{
         List<Aladinitem> aladin = aladinService.getApialadinMain();
         List<DebateMainDTO> addonline = mainPageService.addonline();
         List<DebateMainDTO> addoffline = mainPageService.addoffline();

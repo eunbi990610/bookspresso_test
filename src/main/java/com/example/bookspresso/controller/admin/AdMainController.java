@@ -54,10 +54,12 @@ public class AdMainController {
     public String mainPage(HttpSession session, Model model){
 
         Long adminId = (Long)session.getAttribute("adminId");
+        System.out.println("adminId = " + adminId);
 
         String adminLoginId = adminService.findAdminLoginId(adminId);
         int memberCount = manageMemberService.findListCount();
         int debateCount = manageDebateService.findDebateCount() + manageDebateService.findEndDebateCount() + manageDebateService.findRecruitingDebateCount();
+
 
 
         model.addAttribute("adminId", adminId);

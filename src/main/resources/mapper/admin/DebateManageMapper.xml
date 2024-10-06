@@ -25,7 +25,7 @@
                                            JOIN TBL_BOOK TB
                                                 ON B.ISBN13 = TB.ISBN13
                          <![CDATA[
-                         WHERE DEBATE_START_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE > TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                         WHERE TO_CHAR(DEBATE_START_DATE,'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE > TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                          ]]>
                          ORDER BY DEBATE_END_DATE DESC
                      )
@@ -42,12 +42,12 @@
                  JOIN TBL_DEBATE_BOOK B
                       ON D.DEBATE_ID = B.DEBATE_ID
         <![CDATA[
-        WHERE DEBATE_START_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE > TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(DEBATE_START_DATE, 'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE > TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ]]>
     </select>
 
     <select id="selectSearchDebateList">
-        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,BOOK_NAME,
+        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE, BOOK_NAME,
         DEBATE_START_DATE, DEBATE_END_DATE,
         DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE,DEBATE_TYPE, MEETING_TYPE
         FROM (
@@ -78,7 +78,7 @@
                     JOIN TBL_BOOK TB
                     ON B.ISBN13 = TB.ISBN13
                     <![CDATA[
-                        WHERE DEBATE_START_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE >TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                        WHERE TO_CHAR(DEBATE_START_DATE,'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE >TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                     ]]>
                     ORDER BY DEBATE_END_DATE DESC
                 )
@@ -111,7 +111,7 @@
                     JOIN TBL_BOOK TB
                     ON B.ISBN13 = TB.ISBN13
                     <![CDATA[
-                      WHERE DEBATE_START_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE >TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                      WHERE TO_CHAR(DEBATE_START_DATE, 'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_END_DATE >TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                     ]]>
                 ORDER BY DEBATE_END_DATE DESC
                 )
@@ -151,7 +151,7 @@
                                            JOIN TBL_BOOK TB
                                                 ON B.ISBN13 = TB.ISBN13
                          <![CDATA[
-                         WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                         WHERE TO_CHAR(DEBATE_END_DATE,'YYYY-MM-DD') < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                          ]]>
                          ORDER BY D.DEBATE_END_DATE DESC
                      )
@@ -168,7 +168,7 @@
                  JOIN TBL_DEBATE_BOOK B
                       ON D.DEBATE_ID = B.DEBATE_ID
         <![CDATA[
-        WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(DEBATE_END_DATE,'YYYY-MM-DD') < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ]]>
     </select>
 
@@ -197,7 +197,7 @@
                     JOIN TBL_BOOK TB
                     ON B.ISBN13 = TB.ISBN13
                     <![CDATA[
-                    WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                    WHERE TO_CHAR(D.DEBATE_END_DATE,'YYYY-MM-DD') < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                     ]]>
                     ORDER BY DEBATE_END_DATE DESC
                 )
@@ -241,7 +241,7 @@
         JOIN TBL_BOOK TB
         ON B.ISBN13 = TB.ISBN13
         <![CDATA[
-                    WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                    WHERE TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                     ]]>
         ORDER BY DEBATE_END_DATE DESC
         )
@@ -355,7 +355,7 @@
         JOIN TBL_MEETING_TYPE MT ON D.MEETING_ID = MT.MEETING_ID
         JOIN TBL_BOOK TB
         ON B.ISBN13 = TB.ISBN13
-        WHERE D.GROUP_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ORDER BY GROUP_END_DATE
         )
         <![CDATA[
@@ -373,7 +373,7 @@
         JOIN TBL_DEBATE_TYPE DT ON D.DEBATE_TYPE_ID = DT.DEBATE_TYPE_ID
         JOIN TBL_MEETING_TYPE MT ON D.MEETING_ID = MT.MEETING_ID
         JOIN TBL_BOOK TB ON B.ISBN13 = TB.ISBN13
-        WHERE D.GROUP_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         )
     </select>
 
@@ -409,7 +409,7 @@
         JOIN TBL_BOOK TB
         ON B.ISBN13 = TB.ISBN13
         <![CDATA[
-        WHERE D.GROUP_END_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ]]>
         ORDER BY GROUP_END_DATE
         )
@@ -443,7 +443,7 @@
         JOIN TBL_MEETING_TYPE MT ON D.MEETING_ID = MT.MEETING_ID
         JOIN TBL_BOOK TB ON B.ISBN13 = TB.ISBN13
         <![CDATA[
-        WHERE D.GROUP_END_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE TO_CHAR(D.GROUP_END_DATE,'YYYY-MM-DD') <= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ]]>
         )
         <trim prefix="WHERE" prefixOverrides="OR">
